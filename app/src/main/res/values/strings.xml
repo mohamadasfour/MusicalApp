@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">MusicalApp</string>
+    <string name="songs_type">Arabic Songs</string>
+    <string name="category_english">English Songs</string>
+</resources>
