@@ -1,6 +1,8 @@
 package com.example.android.musicalapp;
 
 import android.content.Context;
+
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -8,6 +10,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
+
 
 import java.util.ArrayList;
 
@@ -31,7 +35,7 @@ public class EnglishSongs extends AppCompatActivity {
                 // Pause playback and reset player to the start of the file. That way, we can
                 // play the word from the beginning when we resume playback.
                 mediaPlayer.pause();
-                mediaPlayer.seekTo( 0 );
+
 
 
             } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
@@ -60,35 +64,34 @@ public class EnglishSongs extends AppCompatActivity {
         // Create a list of words
         final ArrayList<Songs> words;
         words = new ArrayList<>();
-        words.add( new Songs( "bellgram", "Wael Kfory", R.drawable.images, R.raw.addicted ) );
-        words.add( new Songs( "Habbat Altot", "Wafik Habib", R.drawable.images, R.raw.brokenangel ) );
-        words.add( new Songs( "Hotty Kaffek be Kaffy", "tyht", R.drawable.images, R.raw.desiigner ) );
-        words.add( new Songs( "Dally Maey", "Aasy Alhellany", R.drawable.images, R.raw.dontstop ) );
-        words.add( new Songs( "Komy Oresyly Baed", "AAsy Alhellany", R.drawable.images, R.raw.excited ) );
-        words.add( new Songs( "Meshtihy Kelmet Ahhabek", "Aamar Alhalak", R.drawable.images, R.raw.follow ) );
-        words.add( new Songs( "Kammad aynyk", "Majd Alkasem", R.drawable.images, R.raw.fromsarahwithlove ) );
-        words.add( new Songs( "kamaztek", "Kadim Alsaher", R.drawable.images, R.raw.hello ) );
-        words.add( new Songs( "Kessat Khelafatna", "Kadim Alsaher", R.drawable.images, R.raw.hereiam ) );
-        words.add( new Songs( "Le Jesmeki Etron", "Kadim Alsaher", R.drawable.images, R.raw.hero ) );
-        words.add( new Songs( "Ekser Dloaak", "Majed Almohandes", R.drawable.images, R.raw.lady ) );
-        words.add( new Songs( "Mosika Ana Ohebbeki", "Mosika", R.drawable.images, R.raw.mybody ) );
-        words.add( new Songs( "Hal Kolto Any Ohebbeki", "Kadim Alsaher", R.drawable.images, R.raw.kissme ) );
-        words.add( new Songs( "Khodny Layk", "Wael Kfory", R.drawable.images, R.raw.nopromise ) );
-        words.add( new Songs( "Mosh Am Betrohey", "Marwan Khory", R.drawable.images, R.raw.showmethe ) );
-        words.add( new Songs( "Rah Aktob Ahhebak", "Hosam Alrassam", R.drawable.images, R.raw.somebodys ) );
-        words.add( new Songs( "Enta w Maey", "Marwan Khory", R.drawable.images, R.raw.yalla ) );
-        // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
+        words.add( new Songs( "addicted", "Enrique Iglesias", R.drawable.images, R.raw.addicted ) );
+        words.add( new Songs( "Broken Angel", "Arash", R.drawable.images, R.raw.brokenangel ) );
+        words.add( new Songs( "Panda", "Desiinger", R.drawable.images, R.raw.desiigner ) );
+        words.add( new Songs( "Don't Stop the Party", "Pitbull", R.drawable.images, R.raw.dontstop ) );
+        words.add( new Songs( "Mixed", "Dj", R.drawable.images, R.raw.excited ) );
+        words.add( new Songs( "Follow The Leader", "Wisin_Yandel ft.Jennifer", R.drawable.images, R.raw.follow ) );
+        words.add( new Songs( "From Sarah With Love", "sarah connor", R.drawable.images, R.raw.fromsarahwithlove ) );
+        words.add( new Songs( "Hello", "Lionel Richie", R.drawable.images, R.raw.hello ) );
+        words.add( new Songs( "Here I Am", "Bryan Adams", R.drawable.images, R.raw.hereiam ) );
+        words.add( new Songs( "Hero", "Enrique Iglesias", R.drawable.images, R.raw.hero ) );
+        words.add( new Songs( "Lady", "Kenny Rogers", R.drawable.images, R.raw.lady ) );
+        words.add( new Songs( "My Body", "Nayer Ft. Pitbull & Mohombi", R.drawable.images, R.raw.mybody ) );
+        words.add( new Songs( "Kiss me", "Naya", R.drawable.images, R.raw.kissme ) );
+        words.add( new Songs( "NO Promises", "Shayne Ward", R.drawable.images, R.raw.nopromise ) );
+        words.add( new Songs( "Show Me The Meaning", "Back Street Boys", R.drawable.images, R.raw.showmethe ) );
+        words.add( new Songs( "Some Body Is Me", "Enrique Iglesias", R.drawable.images, R.raw.somebodys ) );
+        words.add( new Songs( "My Heart Beating For You", "Inna", R.drawable.images, R.raw.yalla ) );
+        // Create an {@link SongsAdapter}, whose data source is a list of {@link Songs}s. The
         // adapter knows how to create list items for each item in the list.
-        SongsAdapter adapter = new SongsAdapter( this, words, R.color.category_arabic );
-
+        SongsAdapter adapter = new SongsAdapter( this, words, R.color.category_english );
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // word_list.xml layout file.
+        // songs_item.xml layout file.
         ListView listView = findViewById( R.id.list );
 
-        // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
-        // {@link ListView} will display list items for each {@link Word} in the list.
+        // Make the {@link ListView} use the {@link SongsAdapter} we created above, so that the
+        // {@link ListView} will display list items for each {@link Songs} in the list.
         listView.setAdapter( adapter );
         listView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
@@ -99,7 +102,7 @@ public class EnglishSongs extends AppCompatActivity {
                         // Use the music stream.
                         AudioManager.STREAM_MUSIC,
                         // request permanent focus.
-                        AudioManager.AUDIOFOCUS_GAIN );
+                        AudioManager.AUDIOFOCUS_GAIN_TRANSIENT );
                 if (result == AudioManager.AUDIOFOCUS_REQUEST_GRANTED)
                     mediaPlayer = MediaPlayer.create( EnglishSongs.this, word.getAudioResourceId() );
                 mediaPlayer.start();
@@ -107,6 +110,7 @@ public class EnglishSongs extends AppCompatActivity {
             }
         } );
     }
+
 
     private void releaseMediaPlayer() {
         // If the media player is not null, then it may be currently playing a sound.
@@ -136,4 +140,5 @@ public class EnglishSongs extends AppCompatActivity {
         super.onPause();
         releaseMediaPlayer();
     }
+
 }

@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
         setContentView( R.layout.activity_main );
+        //find the view to shows the arabic category
         TextView arabicSongs = findViewById( R.id.Arabic );
         arabicSongs.setOnClickListener( new View.OnClickListener() {
             @Override

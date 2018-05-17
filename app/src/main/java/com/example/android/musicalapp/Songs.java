@@ -9,8 +9,14 @@ public class Songs {
      * English songs names
      */
     private String mArtistName;
+    /**
+     * music resources
+     */
 
     private int mAudioResourceId;
+    /**
+     * Images resources
+     */
 
     private int mImageResourceId;
 
@@ -18,23 +24,23 @@ public class Songs {
     /**
      * Create a new Word object.
      *
-     * @param songName   the word in a language that the user is already familiar with
-     *                   (such as English)
-     * @param artistName is the word in the Miwok language
+     * @param songName   the name of the songs
+     *                   (such as addicted)
+     * @param artistName is the name of artist who sing that song
      */
-    public Songs(String songName, String artistName, int audioResourceId, int imageResourceId) {
+    public Songs(String songName, String artistName, int imageResourceId, int audioResourceId) {
         mSongName = songName;
         mArtistName = artistName;
         mAudioResourceId = audioResourceId;
         mImageResourceId = imageResourceId;
     }
 
-    public String getArabicSongs() {
+    public String getSongsName() {
         return mSongName;
     }
 
 
-    public String getEnglishSongs() {
+    public String getArtistName() {
         return mArtistName;
     }
 

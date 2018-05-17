@@ -1,6 +1,7 @@
 package com.example.android.musicalapp;
 
 import android.content.Context;
+
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ public class ArabicSongs extends AppCompatActivity {
                 // Pause playback and reset player to the start of the file. That way, we can
                 // play the word from the beginning when we resume playback.
                 mediaPlayer.pause();
-                mediaPlayer.seekTo( 0 );
+
 
 
             } else if (focusChange == AudioManager.AUDIOFOCUS_GAIN) {
@@ -62,7 +63,7 @@ public class ArabicSongs extends AppCompatActivity {
         words = new ArrayList<>();
         words.add( new Songs( "bellgram", "Wael Kfory", R.drawable.images, R.raw.bellgram ) );
         words.add( new Songs( "Habbat Altot", "Wafik Habib", R.drawable.images, R.raw.habbat ) );
-        words.add( new Songs( "Hotty Kaffek be Kaffy", "tolookosu", R.drawable.images, R.raw.kaffek ) );
+        words.add( new Songs( "Hotty Kaffek be Kaffy", "Wafik Habib", R.drawable.images, R.raw.kaffek ) );
         words.add( new Songs( "Dally Maey", "Aasy Alhellany", R.drawable.images, R.raw.dally ) );
         words.add( new Songs( "Komy Oresyly Baed", "AAsy Alhellany", R.drawable.images, R.raw.oresyly ) );
         words.add( new Songs( "Meshtihy Kelmet Ahhabek", "Aamar Alhalak", R.drawable.images, R.raw.meshtihy ) );
@@ -77,23 +78,24 @@ public class ArabicSongs extends AppCompatActivity {
         words.add( new Songs( "Mosh Am Betrohey", "Marwan Khory", R.drawable.images, R.raw.mosha ) );
         words.add( new Songs( "Rah Aktob Ahhebak", "Hosam Alrassam", R.drawable.images, R.raw.rahaktob ) );
         words.add( new Songs( "Enta w Maey", "Marwan Khory", R.drawable.images, R.raw.enta ) );
-        // Create an {@link WordAdapter}, whose data source is a list of {@link Word}s. The
+        // Create an {@link SongsAdapter}, whose data source is a list of {@link Songs}s. The
         // adapter knows how to create list items for each item in the list.
         SongsAdapter adapter = new SongsAdapter( this, words, R.color.category_arabic );
 
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the
-        // word_list.xml layout file.
+        // songs_item.xml layout file.
         ListView listView = findViewById( R.id.list );
 
-        // Make the {@link ListView} use the {@link WordAdapter} we created above, so that the
-        // {@link ListView} will display list items for each {@link Word} in the list.
+        // Make the {@link ListView} use the {@link SongsAdapter} we created above, so that the
+        // {@link ListView} will display list items for each {@link Songs} in the list.
         listView.setAdapter( adapter );
         listView.setOnItemClickListener( new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Songs word = words.get( position );
+                releaseMediaPlayer();
                 int result = mAudioManager.requestAudioFocus( mOnAudioFocusChangeListener,
                         // Use the music stream.
                         AudioManager.STREAM_MUSIC,
@@ -117,6 +119,8 @@ public class ArabicSongs extends AppCompatActivity {
             // Set the media player back to null. For our code, we've decided that
             // setting the media player to null is an easy way to tell that the media player
             // is not configured to play an audio file at the moment.
+
+            mediaPlayer = null;
 
             mAudioManager.abandonAudioFocus( mOnAudioFocusChangeListener );
         }

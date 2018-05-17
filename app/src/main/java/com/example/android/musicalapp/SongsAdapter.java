@@ -39,21 +39,21 @@ public class SongsAdapter extends ArrayAdapter<Songs> {
         // Get the {@link Word} object located at this position in the list
         Songs currentWord = getItem( position );
 
-        // Find the TextView in the list_item.xml layout with the ID miwok_text_view.
+        // Find the TextView in the list_item.xml layout with the ID name.
         TextView songTextView = listItemView.findViewById( R.id.name );
-        // Get the Miwok translation from the currentWord object and set this text on
-        // the Miwok TextView.
-        songTextView.setText( currentWord.getArabicSongs() );
+        // Get the Songs name from the currentSongs object and set this text on
+        // the name TextView.
+        songTextView.setText( currentWord.getSongsName() );
 
-        // Find the TextView in the list_item.xml layout with the ID default_text_view.
+        // Find the TextView in the list_item.xml layout with the ID artist.
         TextView secondTextView = listItemView.findViewById( R.id.artist );
-        // Get the default translation from the currentWord object and set this text on
-        // the default TextView.
-        secondTextView.setText( currentWord.getEnglishSongs() );
+        // Get the artist Name  from the currentSongs object and set this text on
+        // the artist TextView.
+        secondTextView.setText( currentWord.getArtistName() );
 
         // Find the ImageView in the list_item.xml layout with the ID image.
-        ImageView imageView = (ImageView) listItemView.findViewById(R.id.image);
-              // Set the ImageView to the image resource specified in the current Word
+        ImageView imageView = listItemView.findViewById( R.id.image );
+        // Set the ImageView to the image resource specified in the current Songs
                   imageView.setImageResource(currentWord.getImageResourceId());
 
 
@@ -65,7 +65,7 @@ public class SongsAdapter extends ArrayAdapter<Songs> {
         textContainer.setBackgroundColor( color );
 
 
-        // Return the whole list item layout (containing 2 TextViews) so that it can be shown in
+        // Return the whole list item layout (containing 2 TextViews 2 ImageViews and audioResource) so that it can be shown in
         // the ListView.
         return listItemView;
     }

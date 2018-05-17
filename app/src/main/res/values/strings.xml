@@ -2,4 +2,6 @@
     <string name="app_name">MusicalApp</string>
     <string name="songs_type">Arabic Songs</string>
     <string name="category_english">English Songs</string>
+    <string name="Song">Song Name</string>
+    <string name="Artist">Artist Name</string>
 </resources>

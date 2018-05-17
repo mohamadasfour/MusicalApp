@@ -35,7 +35,7 @@
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/white"
             android:textStyle="bold"
-            tools:text="Song Name" />
+            tools:text="@string/Song" />
 
         <TextView
             android:id="@+id/artist"
@@ -45,7 +45,7 @@
             android:gravity="top"
             android:textAppearance="?android:textAppearanceMedium"
             android:textColor="@android:color/white"
-            tools:text="Artist Name" />
+            tools:text="@string/Artist" />
     </LinearLayout>
 
     <ImageView
