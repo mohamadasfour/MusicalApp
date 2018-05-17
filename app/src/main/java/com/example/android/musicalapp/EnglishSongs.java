@@ -9,8 +9,11 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+
+import android.widget.ImageButton;
+
 import android.widget.ListView;
-import android.widget.TextView;
+
 
 
 import java.util.ArrayList;
@@ -72,11 +75,7 @@ public class EnglishSongs extends AppCompatActivity {
         words.add( new Songs( "Follow The Leader", "Wisin_Yandel ft.Jennifer", R.drawable.images, R.raw.follow ) );
         words.add( new Songs( "From Sarah With Love", "sarah connor", R.drawable.images, R.raw.fromsarahwithlove ) );
         words.add( new Songs( "Hello", "Lionel Richie", R.drawable.images, R.raw.hello ) );
-        words.add( new Songs( "Here I Am", "Bryan Adams", R.drawable.images, R.raw.hereiam ) );
-        words.add( new Songs( "Hero", "Enrique Iglesias", R.drawable.images, R.raw.hero ) );
         words.add( new Songs( "Lady", "Kenny Rogers", R.drawable.images, R.raw.lady ) );
-        words.add( new Songs( "My Body", "Nayer Ft. Pitbull & Mohombi", R.drawable.images, R.raw.mybody ) );
-        words.add( new Songs( "Kiss me", "Naya", R.drawable.images, R.raw.kissme ) );
         words.add( new Songs( "NO Promises", "Shayne Ward", R.drawable.images, R.raw.nopromise ) );
         words.add( new Songs( "Show Me The Meaning", "Back Street Boys", R.drawable.images, R.raw.showmethe ) );
         words.add( new Songs( "Some Body Is Me", "Enrique Iglesias", R.drawable.images, R.raw.somebodys ) );
@@ -84,6 +83,16 @@ public class EnglishSongs extends AppCompatActivity {
         // Create an {@link SongsAdapter}, whose data source is a list of {@link Songs}s. The
         // adapter knows how to create list items for each item in the list.
         SongsAdapter adapter = new SongsAdapter( this, words, R.color.category_english );
+        ImageButton back = findViewById( R.id.back );
+        back.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( EnglishSongs.this, MainActivity.class );
+                // Keep the info how the list was sorted, before going to this activity
+
+                startActivity( intent );
+            }
+        } );
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
         // There should be a {@link ListView} with the view ID called list, which is declared in the

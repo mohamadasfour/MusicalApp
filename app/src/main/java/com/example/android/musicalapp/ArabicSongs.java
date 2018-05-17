@@ -2,14 +2,15 @@ package com.example.android.musicalapp;
 
 import android.content.Context;
 
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.ListView;
-
 import java.util.ArrayList;
 
 public class ArabicSongs extends AppCompatActivity {
@@ -63,24 +64,30 @@ public class ArabicSongs extends AppCompatActivity {
         words = new ArrayList<>();
         words.add( new Songs( "bellgram", "Wael Kfory", R.drawable.images, R.raw.bellgram ) );
         words.add( new Songs( "Habbat Altot", "Wafik Habib", R.drawable.images, R.raw.habbat ) );
-        words.add( new Songs( "Hotty Kaffek be Kaffy", "Wafik Habib", R.drawable.images, R.raw.kaffek ) );
         words.add( new Songs( "Dally Maey", "Aasy Alhellany", R.drawable.images, R.raw.dally ) );
         words.add( new Songs( "Komy Oresyly Baed", "AAsy Alhellany", R.drawable.images, R.raw.oresyly ) );
         words.add( new Songs( "Meshtihy Kelmet Ahhabek", "Aamar Alhalak", R.drawable.images, R.raw.meshtihy ) );
-        words.add( new Songs( "Kammad aynyk", "Majd Alkasem", R.drawable.images, R.raw.khamad ) );
-        words.add( new Songs( "kamaztek", "Kadim Alsaher", R.drawable.images, R.raw.kamaztek ) );
         words.add( new Songs( "Kessat Khelafatna", "Kadim Alsaher", R.drawable.images, R.raw.story ) );
         words.add( new Songs( "Le Jesmeki Etron", "Kadim Alsaher", R.drawable.images, R.raw.lejesmeki ) );
         words.add( new Songs( "Ekser Dloaak", "Majed Almohandes", R.drawable.images, R.raw.ekser ) );
         words.add( new Songs( "Mosika Ana Ohebbeki", "Mosika", R.drawable.images, R.raw.music ) );
         words.add( new Songs( "Hal Kolto Any Ohebbeki", "Kadim Alsaher", R.drawable.images, R.raw.koltu ) );
-        words.add( new Songs( "Khodny Layk", "Wael Kfory", R.drawable.images, R.raw.khodny ) );
         words.add( new Songs( "Mosh Am Betrohey", "Marwan Khory", R.drawable.images, R.raw.mosha ) );
         words.add( new Songs( "Rah Aktob Ahhebak", "Hosam Alrassam", R.drawable.images, R.raw.rahaktob ) );
         words.add( new Songs( "Enta w Maey", "Marwan Khory", R.drawable.images, R.raw.enta ) );
         // Create an {@link SongsAdapter}, whose data source is a list of {@link Songs}s. The
         // adapter knows how to create list items for each item in the list.
         SongsAdapter adapter = new SongsAdapter( this, words, R.color.category_arabic );
+        ImageButton back = findViewById( R.id.back );
+        back.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent( ArabicSongs.this, MainActivity.class );
+                // Keep the info how the list was sorted, before going to this activity
+
+                startActivity( intent );
+            }
+        } );
 
 
         // Find the {@link ListView} object in the view hierarchy of the {@link Activity}.
